@@ -933,7 +933,6 @@ function SummarySection({ onRestart }: { onRestart: () => void }) {
 }
 
 function LessonNavigation({ current, goTo, goPrevious, goNext }: { current: number; goTo: (id: SectionId) => void; goPrevious: () => void; goNext: () => void }) {
-  const progress = ((current + 1) / lessonSections.length) * 100;
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) void document.documentElement.requestFullscreen?.();
     else void document.exitFullscreen?.();
@@ -941,12 +940,11 @@ function LessonNavigation({ current, goTo, goPrevious, goNext }: { current: numb
 
   return (
     <>
-      <div className="fixed inset-x-0 top-0 z-[60] h-1 bg-white/10"><motion.div className="h-full bg-coral" animate={{ width: `${progress}%` }} /></div>
-      <header className="fixed inset-x-0 top-1 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1560px] items-stretch px-2 sm:px-4">
           <nav aria-label="Conteúdos da aula" className="no-scrollbar min-w-0 flex-1 overflow-x-auto py-2">
             <div className="relative flex min-w-max items-start px-1">
-              <span aria-hidden="true" className="absolute left-10 right-10 top-[19px] h-px bg-white/14" />
+              <span aria-hidden="true" className="absolute left-10 right-10 top-3 h-px bg-white/14" />
               {lessonSections.map((section, index) => (
                 <button
                   key={section.id}
