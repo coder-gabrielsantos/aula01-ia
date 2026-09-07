@@ -8,19 +8,19 @@ const mono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ia-sem-misterio-arvores.maxcrowleyadz.chatgpt.site'),
-  title: 'IA sem mistério — Árvores de decisão',
-  description: 'Uma aula interativa sobre árvores de decisão para o ensino médio.',
+  title: 'Árvores de Decisão: Como Estruturar o Raciocínio Lógico',
+  description: 'Da intuição humana aos algoritmos de Machine Learning — uma aula interativa para o ensino médio.',
   openGraph: {
-    title: 'IA sem mistério — Árvores de decisão',
-    description: 'Aprenda como uma IA decide com exemplos interativos, laboratório e quiz.',
+    title: 'Árvores de Decisão: Como Estruturar o Raciocínio Lógico',
+    description: 'Da intuição humana aos algoritmos de Machine Learning, com exemplos interativos, laboratório e quiz.',
     type: 'website',
     locale: 'pt_BR',
     images: [{ url: '/og.png', width: 1200, height: 630, alt: 'IA sem mistério — Árvores de decisão, passo a passo' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IA sem mistério — Árvores de decisão',
-    description: 'Uma aula interativa e visual para o ensino médio.',
+    title: 'Árvores de Decisão: Como Estruturar o Raciocínio Lógico',
+    description: 'Da intuição humana aos algoritmos de Machine Learning.',
     images: ['/og.png'],
   },
 };
