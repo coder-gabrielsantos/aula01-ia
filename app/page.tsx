@@ -942,29 +942,35 @@ function LessonNavigation({ current, goTo, goPrevious, goNext }: { current: numb
   return (
     <>
       <div className="fixed inset-x-0 top-0 z-[60] h-1 bg-white/10"><motion.div className="h-full bg-coral" animate={{ width: `${progress}%` }} /></div>
-      <header className="fixed inset-x-0 top-1 z-50 border-b border-white/10 bg-ink/82 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-[1480px] items-center justify-between px-4 sm:px-7">
-          <button onClick={() => goTo('inicio')} className="flex items-center gap-2.5 text-left" aria-label="Ir ao início">
-            <span className="grid size-9 place-items-center rounded-xl bg-mint text-ink shadow-[0_0_24px_rgba(111,235,184,.18)]"><BrainCircuit className="size-5" /></span>
-            <span className="hidden font-display text-base tracking-tight text-white sm:block">IA sem mistério</span>
-          </button>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[.16em] text-white/40 sm:text-xs"><span className="text-mint">{String(current + 1).padStart(2, '0')}</span> / {String(lessonSections.length).padStart(2, '0')} <span className="hidden sm:inline">· {lessonSections[current].title}</span></span>
-            <Button onClick={toggleFullscreen} variant="ghost" size="icon" className="rounded-full text-white/50 hover:bg-white/10 hover:text-white" aria-label="Alternar tela cheia"><Expand className="size-4" /></Button>
+      <header className="fixed inset-x-0 top-1 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-[1560px] items-stretch px-2 sm:px-4">
+          <nav aria-label="Conteúdos da aula" className="no-scrollbar min-w-0 flex-1 overflow-x-auto py-2">
+            <div className="relative flex min-w-max items-start px-1">
+              <span aria-hidden="true" className="absolute left-10 right-10 top-[19px] h-px bg-white/14" />
+              {lessonSections.map((section, index) => (
+                <button
+                  key={section.id}
+                  onClick={() => goTo(section.id)}
+                  aria-label={`Ir para ${section.title}`}
+                  aria-current={current === index ? 'step' : undefined}
+                  className="group relative z-10 flex w-[78px] shrink-0 flex-col items-center gap-1.5 px-1 text-center sm:w-[94px] xl:w-[102px]"
+                >
+                  <motion.span
+                    animate={{ scale: current === index ? 1 : .9 }}
+                    className={`grid h-6 min-w-6 place-items-center rounded-full border px-1.5 font-mono text-[9px] font-black transition-colors ${current === index ? 'border-mint bg-mint text-ink shadow-[0_0_18px_rgba(111,235,184,.25)]' : index < current ? 'border-mint/40 bg-ink text-mint' : 'border-white/18 bg-ink text-white/38 group-hover:border-white/45 group-hover:text-white'}`}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </motion.span>
+                  <span className={`max-w-full truncate text-[9px] font-bold uppercase tracking-[.08em] transition-colors sm:text-[10px] ${current === index ? 'text-white' : 'text-white/32 group-hover:text-white/65'}`}>{section.short}</span>
+                </button>
+              ))}
+            </div>
+          </nav>
+          <div className="ml-2 flex shrink-0 items-center border-l border-white/10 pl-2 sm:ml-3 sm:pl-3">
+            <Button onClick={toggleFullscreen} variant="ghost" size="icon" className="rounded-full text-white/55 hover:bg-white/10 hover:text-white" aria-label="Alternar tela cheia"><Expand className="size-4" /></Button>
           </div>
         </div>
       </header>
-
-      <nav aria-label="Capítulos da aula" className="fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 xl:block">
-        <div className="flex flex-col items-end gap-2 rounded-2xl border border-white/10 bg-ink/70 p-2 backdrop-blur-xl">
-          {lessonSections.map((section, index) => (
-            <button key={section.id} onClick={() => goTo(section.id)} aria-label={`Ir para ${section.title}`} aria-current={current === index ? 'step' : undefined} className="group flex h-8 items-center gap-2 rounded-xl px-2 text-right">
-              <span className={`max-w-0 overflow-hidden whitespace-nowrap text-xs font-semibold transition-all duration-300 group-hover:max-w-28 ${current === index ? 'max-w-28 text-white' : 'text-white/45'}`}>{section.short}</span>
-              <span className={`block rounded-full transition-all ${current === index ? 'h-5 w-1.5 bg-mint' : 'size-1.5 bg-white/25 group-hover:bg-white/60'}`} />
-            </button>
-          ))}
-        </div>
-      </nav>
 
       <div className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/10 bg-ink/88 p-1.5 shadow-2xl backdrop-blur-xl">
         <Button onClick={goPrevious} disabled={current === 0} variant="ghost" size="icon" className="rounded-full text-white/55 hover:bg-white/10 hover:text-white" aria-label="Seção anterior"><ChevronLeft className="size-4" /></Button>
