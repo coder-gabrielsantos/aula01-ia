@@ -7,20 +7,20 @@ const body = DM_Sans({ variable: '--font-dm-sans', subsets: ['latin'] });
 const mono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ia-sem-misterio-arvores.maxcrowleyadz.chatgpt.site'),
-  title: 'Árvores de Decisão: Como Estruturar o Raciocínio Lógico',
-  description: 'Da intuição humana aos algoritmos de Machine Learning — uma aula interativa para o ensino médio.',
+  metadataBase: new URL('http://localhost:3000'),
+  title: 'Redes Neurais & Deep Learning — Aula Interativa',
+  description: 'Como máquinas aprendem a reconhecer imagens e sons — uma aula interativa sobre inteligência artificial.',
   openGraph: {
-    title: 'Árvores de Decisão: Como Estruturar o Raciocínio Lógico',
-    description: 'Da intuição humana aos algoritmos de Machine Learning, com exemplos interativos, laboratório e quiz.',
+    title: 'Redes Neurais & Deep Learning',
+    description: 'Como máquinas aprendem a reconhecer imagens e sons, com explicações intuitivas e três laboratórios virtuais.',
     type: 'website',
     locale: 'pt_BR',
-    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'IA sem mistério — Árvores de decisão, passo a passo' }],
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Redes Neurais e Deep Learning — aula interativa' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Árvores de Decisão: Como Estruturar o Raciocínio Lógico',
-    description: 'Da intuição humana aos algoritmos de Machine Learning.',
+    title: 'Redes Neurais & Deep Learning',
+    description: 'Como máquinas aprendem a reconhecer imagens e sons.',
     images: ['/og.png'],
   },
 };
